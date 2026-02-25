@@ -15,14 +15,14 @@ const ResultSection = ({ title, icon, delay = 0, children, illustration }: Resul
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-50px" }}
     transition={{ duration: 0.6, delay, ease: "easeOut" }}
-    className="relative rounded-2xl glass-card p-6 md:p-8 overflow-hidden group"
+    className="relative rounded-2xl glass-card p-4 sm:p-6 md:p-8 lg:p-10 overflow-hidden group w-full"
   >
     {/* Hover glow effect */}
     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
 
     <div className="relative z-10 flex gap-6">
       <div className="flex-1">
-        <h3 className="flex items-center gap-3 text-xl md:text-2xl font-semibold mb-4 font-display">
+        <h3 className="flex items-center gap-2 sm:gap-3 text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-3 sm:mb-4 font-display">
           <motion.span
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}

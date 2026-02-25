@@ -22,10 +22,10 @@ const TraitBar = ({ name, level, reasoning, delay }: TraitBarProps) => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="mb-6 last:mb-0 group"
+      className="mb-4 sm:mb-6 last:mb-0 group"
     >
       <div className="flex justify-between items-baseline mb-2">
-        <span className="font-medium text-foreground">{name}</span>
+        <span className="font-medium text-foreground text-sm sm:text-base">{name}</span>
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -36,7 +36,7 @@ const TraitBar = ({ name, level, reasoning, delay }: TraitBarProps) => {
           {level}
         </motion.span>
       </div>
-      <div className="h-2.5 rounded-full bg-secondary overflow-hidden mb-3">
+      <div className="h-2 sm:h-2.5 md:h-3 rounded-full bg-secondary overflow-hidden mb-2 sm:mb-3">
         <motion.div
           className={`h-full rounded-full bg-gradient-to-r ${config.color}`}
           initial={{ width: 0 }}

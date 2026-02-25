@@ -19,7 +19,7 @@ const features = [
 ];
 
 const FeatureCards = () => (
-  <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto px-6">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     {features.map((f, i) => (
       <motion.div
         key={f.title}
