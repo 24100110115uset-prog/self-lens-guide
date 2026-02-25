@@ -204,93 +204,105 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-28 space-y-6"
+            className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-28"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center mb-10"
+              className="text-center mb-14"
             >
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-2">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium tracking-wide mb-5"
+              >
+                ✦ Analysis Complete
+              </motion.div>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-3">
                 Your Reflection
               </h2>
-              <p className="text-muted-foreground">Here's what your words reveal about you</p>
+              <p className="text-muted-foreground max-w-md mx-auto">Here's what your words reveal about you</p>
             </motion.div>
 
-            <ResultSection title="Personality Traits" icon="🧭" delay={0} illustration={traitsImg}>
-              {result.traits.map((t, i) => (
-                <TraitBar key={t.name} {...t} delay={i * 0.12} />
-              ))}
-            </ResultSection>
-
-            <ResultSection title="Communication Style" icon="💬" delay={0.1}>
-              <p>{result.communicationStyle}</p>
-            </ResultSection>
-
-            <ResultSection title="Strengths" icon="✦" delay={0.15}>
-              <ul className="space-y-3">
-                {result.strengths.map((s, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-start gap-3"
-                  >
-                    <span className="text-primary mt-0.5 text-lg">•</span>
-                    <span>{s}</span>
-                  </motion.li>
+            <div className="space-y-5">
+              <ResultSection title="Personality Traits" icon="🧭" delay={0} illustration={traitsImg}>
+                {result.traits.map((t, i) => (
+                  <TraitBar key={t.name} {...t} delay={i * 0.12} />
                 ))}
-              </ul>
-            </ResultSection>
+              </ResultSection>
 
-            <ResultSection title="Growth Areas" icon="🌱" delay={0.2} illustration={journalImg}>
-              <ul className="space-y-3">
-                {result.growthAreas.map((g, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-start gap-3"
-                  >
-                    <span className="text-accent mt-0.5 text-lg">•</span>
-                    <span>{g}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </ResultSection>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <ResultSection title="Communication Style" icon="💬" delay={0.1}>
+                  <p className="text-sm sm:text-base">{result.communicationStyle}</p>
+                </ResultSection>
 
-            <ResultSection title="Reflection Questions" icon="🪞" delay={0.25}>
-              <ol className="space-y-4">
-                {result.reflectionQuestions.map((q, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.15 }}
-                    className="flex gap-3"
-                  >
-                    <span className="text-primary font-semibold font-display text-lg">{i + 1}.</span>
-                    <span className="text-foreground/80 leading-relaxed">{q}</span>
-                  </motion.li>
-                ))}
-              </ol>
-            </ResultSection>
+                <ResultSection title="Strengths" icon="✦" delay={0.15}>
+                  <ul className="space-y-2.5">
+                    {result.strengths.map((s, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        className="flex items-start gap-3 text-sm sm:text-base"
+                      >
+                        <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/15 text-primary text-[10px] font-bold mt-0.5 flex-shrink-0">{i + 1}</span>
+                        <span>{s}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </ResultSection>
+              </div>
+
+              <ResultSection title="Growth Areas" icon="🌱" delay={0.2} illustration={journalImg}>
+                <ul className="space-y-2.5">
+                  {result.growthAreas.map((g, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-start gap-3 text-sm sm:text-base"
+                    >
+                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/15 text-accent text-[10px] font-bold mt-0.5 flex-shrink-0">{i + 1}</span>
+                      <span>{g}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </ResultSection>
+
+              <ResultSection title="Reflection Questions" icon="🪞" delay={0.25}>
+                <ol className="space-y-4">
+                  {result.reflectionQuestions.map((q, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.15 }}
+                      className="flex gap-3 text-sm sm:text-base"
+                    >
+                      <span className="text-primary font-semibold font-display text-lg">{i + 1}.</span>
+                      <span className="text-foreground/80 leading-relaxed">{q}</span>
+                    </motion.li>
+                  ))}
+                </ol>
+              </ResultSection>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="rounded-2xl bg-secondary/50 backdrop-blur-sm border border-border/50 p-6 text-sm text-muted-foreground leading-relaxed"
+              className="mt-8 rounded-2xl bg-muted/50 border border-border/50 p-6 text-sm text-muted-foreground leading-relaxed"
             >
               <p className="font-medium text-foreground mb-2 font-display">⚠️ Disclaimer</p>
               <p>
-                This analysis is AI-generated and based solely on the provided text. It is not a psychological assessment or clinical diagnosis. Results may not fully represent your personality. For professional evaluation, consult a licensed psychologist or mental health professional.
+                This analysis is AI-generated and based solely on the provided text. It is not a psychological assessment or clinical diagnosis. For professional evaluation, consult a licensed psychologist.
               </p>
             </motion.div>
           </motion.section>
