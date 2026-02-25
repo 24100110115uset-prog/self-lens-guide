@@ -129,7 +129,7 @@ const Index = () => {
       </section>
 
       {/* Input Section */}
-      <section id="write" className="max-w-2xl mx-auto px-6 pb-20 scroll-mt-12">
+      <section id="write" className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 scroll-mt-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -204,7 +204,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="max-w-2xl mx-auto px-6 pb-28 space-y-6"
+            className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-28 space-y-6"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
